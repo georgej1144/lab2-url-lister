@@ -26,6 +26,9 @@ run: URLCount1.jar
 	-rm -rf output
 	hadoop jar URLCount1.jar URLCount1 input output
 
+time: URLCount1.jar
+	-rm -rf output
+	time hadoop jar URLCount1.jar URLCount1 input output
 
 ##
 ## You may need to change the path for this depending
