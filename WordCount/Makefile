@@ -6,10 +6,10 @@ USER=$(shell whoami)
 
 HADOOP_CLASSPATH=$(shell hadoop classpath)
 
-URLCount1.jar: URLCount1.java
-	javac -classpath $(HADOOP_CLASSPATH) -d ./ URLCount1.java
-	jar cf URLCount1.jar URLCount1*.class	
-	-rm -f URLCount1*.class
+WordCount1.jar: WordCount1.java
+	javac -classpath $(HADOOP_CLASSPATH) -d ./ WordCount1.java
+	jar cf WordCount1.jar WordCount1*.class	
+	-rm -f WordCount1*.class
 
 prepare:
 	-hdfs dfs -mkdir input
@@ -22,9 +22,9 @@ filesystem:
 	-hdfs dfs -mkdir /user
 	-hdfs dfs -mkdir /user/$(USER)
 
-run: URLCount1.jar
+run: WordCount1.jar
 	-rm -rf output
-	hadoop jar URLCount1.jar URLCount1 input output
+	hadoop jar WordCount1.jar WordCount1 input output
 
 
 ##
