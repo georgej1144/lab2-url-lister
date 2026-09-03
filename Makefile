@@ -8,7 +8,7 @@ HADOOP_CLASSPATH=$(shell hadoop classpath)
 
 URLCount1.jar: URLCount1.java
 	javac -classpath $(HADOOP_CLASSPATH) -d ./ URLCount1.java
-	jar cf URLCount1.jar URLCount1*.class	
+	jar cf URLCount1.jar URLCount1*.class
 	-rm -f URLCount1*.class
 
 prepare:
@@ -25,10 +25,6 @@ filesystem:
 run: URLCount1.jar
 	-rm -rf output
 	hadoop jar URLCount1.jar URLCount1 input output
-
-time: URLCount1.jar
-	-rm -rf output
-	time hadoop jar URLCount1.jar URLCount1 input output
 
 ##
 ## You may need to change the path for this depending

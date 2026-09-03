@@ -77,11 +77,13 @@ I had troubles with the browser-based user interface, but this command worked:
 
 ```
 gcloud dataproc clusters create test-dataproc \
-    --project=lab2-470203 \
+    --project=csci4253-lab2 \
     --region=us-east4 \
     --zone=us-east4-a \
     --master-machine-type=e2-standard-2 \
     --worker-machine-type=e2-standard-2 \
+    --master-boot-disk-size=50GB \
+    --worker-boot-disk-size=50GB \
     --num-workers=2 \
     --public-ip-address
 ```

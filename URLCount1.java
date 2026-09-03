@@ -59,7 +59,9 @@ public class URLCount1 {
     Configuration conf = new Configuration();
 
     // setup RegexMapper with URL pattern (provided)
-    conf.set(RegexMapper.PATTERN, "href=\"[^\"]*\"");
+    conf.set(RegexMapper.PATTERN, "href=\"([^\"]*)\"");
+    // match on group 1 to only get URL not href metadata
+    conf.set(RegexMapper.GROUP, "1");
     
     Job job = Job.getInstance(conf, "url count");
     job.setJarByClass(URLCount1.class);
