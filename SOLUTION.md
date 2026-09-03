@@ -30,7 +30,11 @@ On distributed systems, the results won't be returned in 1 file. Display the ful
 
 Running the workload on 2 nodes was significantly slower than running locally. Presumably, this is due to the intense overhead of setting up the two machines to do a very easy task. On 4 nodes the time only gets slower. This is because there is **even more** overhead, but the workload of 2 files cannot be shared any further between 4 systems as it can between 2 systems.
 
-
+| # of Nodes | Real      | User      | Sys      |
+|------------|-----------|-----------|----------|
+| 1          | 0m2.613s  | 0m3.776s  | 0m0.360s |
+| 2          | 0m56.228s | 0m12.794s | 0m1.049s |
+| 4          | 1m16.530s | 0m14.348s | 0m0.884s |
 
 
 ## Cleanup
