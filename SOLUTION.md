@@ -28,14 +28,26 @@ On distributed systems, the results won't be returned in 1 file. Display the ful
 
 
 
-Running the workload on 2 nodes was significantly slower than running locally. Presumably, this is due to the intense overhead of setting up the two machines to do a very easy task. On 4 nodes the time only gets slower. This is because there is **even more** overhead, but the workload of 2 files cannot be shared any further between 4 systems as it can between 2 systems.
+Running the workload on 2 nodes was faster than running on 1 node, but nowhere near twice as fast (for the 2x in compute). Presumably, this is due to the intense overhead of setting up the two machines to do a very easy task. On 4 nodes the time is as slow as running on 1 node. This is because there is **even more** overhead, but the workload of 2 files cannot be shared any further between 4 systems as it can between 2 systems. The 20 second difference between 2 and 4 nodes is entirely spent managing the 2 extra nodes.
 
 | # of Nodes | Real      | User      | Sys      |
 |------------|-----------|-----------|----------|
-| 1          | 0m2.613s  | 0m3.776s  | 0m0.360s |
+| 1          | 1m16.652s | 0m14.393s | 0m0.874s |
 | 2          | 0m56.228s | 0m12.794s | 0m1.049s |
 | 4          | 1m16.530s | 0m14.348s | 0m0.884s |
 
+
+Single node times were gathered by running the workload on a single-node cluster using:
+```
+gcloud dataproc clusters create test-dataproc-single \
+    --project=csci4253-lab2 \
+    --region=us-east4 \
+    --zone=us-east4-a \
+    --single-node \
+    --master-machine-type=e2-standard-2 \
+    --master-boot-disk-size=50GB \
+    --public-ip-address
+```
 
 ## Cleanup
 
@@ -45,4 +57,5 @@ Gcloud cleanup of the clusters can be done with the following `gcloud dataproc c
 ## Collaboration
 
 This assignment was worked on exclusively by me, George Johnson.
-claude.ai used to annotate the original WordCount1.java provide guidance on `gcloud` operation, and 
+Claude.ai was used to annotate the original WordCount1.java and provide guidance on `gcloud` operations.
+
